@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terra - Sitio Creativo</title>
+    
+	<img src="logo.png" alt="Logo Terra" class="logo-izquierda">
+
+
+	
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #fefefe;
+      overflow-x: hidden;
+    }
+
+    /* --- Encabezado (primera sección) --- */
+    header {
+      background: linear-gradient(to bottom, #aee4ff, #d8f3ff);
+      padding: 60px 20px 40px;
+      text-align: center;
+      position: relative;
+      height: auto;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Título con efecto por letras */
+    .titulo-letras {
+      display: inline-block;
+      margin: 0;
+    }
+
+    .titulo-letras span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .titulo-letras.animate span {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #444;
+      margin: 0 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    header p {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .btn {
+      background: #ffa500;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1rem;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .btn:hover {
+      background: #ff7b00;
+      transform: scale(1.05);
+    }
+
+    /* --- Nubes animadas con tu imagen PNG --- */
+    .nube-img {
+      position: absolute;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: float linear infinite;
+      z-index: 2;
+    }
+
+    @keyframes float {
+      from { transform: translateX(-250px); }
+      to { transform: translateX(calc(100vw + 250px)); }
+    }
+
+    .nube-1 { top: 80px; width: 180px; animation-duration: 60s; }
+    .nube-2 { top: 180px; width: 220px; animation-duration: 80s; }
+    .nube-3 { top: 40px; width: 150px; animation-duration: 70s; }
+
+    /* --- Slider automático con fade (soporta PNG transparente) --- */
+    .slider-fade {
+      position: relative;
+      width: 95%;
+      max-width: 1000px;
+      height: 500px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      cursor: grab;
+    }
+
+    .slider-fade.dragging {
+      cursor: grabbing;
+    }
+
+    .slide-fade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .slide-fade.active {
+      opacity: 1;
+    }
+
+    .slider-controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #bbb;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .dot.active {
+      background: #024ebf;
+    }
+
+    /* --- Franja de nubes PNG --- */
+    .nubes {
+      width: 100%;
+      height: 400px;
+      background: url('NUBES1.png') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      z-index: 4;
+      margin-top: -250px;
+    }
+
+    /* --- Segunda sección --- */
+    .seccion2 {
+      background: #ffffff;
+      padding: 80px 20px 380px;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Título de sección 2: centrado, arriba del contenido-flex */
+    .seccion2 .titulo-principal {
+      text-align: center;
+      font-size: 2rem;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .seccion2 .titulo-letras {
+      display: inline-block;
+    }
+
+    .seccion2 .titulo-letras span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .seccion2 .titulo-letras.animate span {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .seccion2 .btn {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 25px;
+    }
+
+    .contenido-flex {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .contenido-flex img {
+      max-width: 45%;
+      height: auto;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .aos-animate.girar-al-aparecer {
+      animation: girarSuave 25s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes girarSuave {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .contenido-flex .texto {
+      max-width: 55%;
+      color: #666;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .contenido-flex {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contenido-flex img {
+        max-width: 90%;
+      }
+      .contenido-flex .texto {
+        max-width: 90%;
+      }
+    }
+
+    .franja-azul {
+      width: 100%;
+      height: 400px;
+      background: url('AZUL1.png') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      z-index: 5;
+      margin-top: -300px;
+    }
+
+    .seccion-azul {
+      background: #024ebf;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .seccion-azul h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .seccion-azul p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+	  
+	  
+.logo-izquierda {
+  position: fixed;        /* 👈 ahora sigue el scroll */
+  top: 20px;
+  left: 30px;
+  width: 100px;           /* ajusta el tamaño según necesites */
+  height: auto;
+  z-index: 999;           /* siempre por encima del contenido */
+  opacity: 0.95;          /* leve transparencia opcional */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-izquierda:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+
+	  
+	  
+	  
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Nubes animadas -->
+    <img src="./nube100.png" alt="Nube 1" class="nube-img nube-1">
+    <img src="./nube100.png" alt="Nube 2" class="nube-img nube-2">
+    <img src="./nube100.png" alt="Nube 3" class="nube-img nube-3">
+
+    <h1 
+  class="titulo-letras" 
+  id="titulo1" 
+  data-aos="fade-up" 
+  data-aos-delay="100">
+  CRECEN CONECTADOS:
+</h1>
+
+<h1 
+  class="titulo-letras" 
+  id="titulo2" 
+  data-aos="fade-up" 
+  data-aos-delay="300">
+  EL IMPACTO DEL CELULAR EN LA VIDA DE LOS NIÑOS
+</h1>
+
+    
+    <button class="btn">Conoce más</button>
+
+    <!-- Slider con soporte de arrastre -->
+    <div class="slider-fade" id="imageSlider">
+      <div class="slide-fade active" style="background-image: url('slider/1.png');"></div>
+      <div class="slide-fade" style="background-image: url('slider/2.png');"></div>
+      <div class="slide-fade" style="background-image: url('slider/3.png');"></div>
+    </div>
+
+    <div class="slider-controls" id="dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+  </header>
+
+  <div class="nubes"></div>
+
+  <!-- Sección 2: título separado, arriba del contenido-flex -->
+  <section class="seccion2">
+    <button class="btn">Conoce más</button>
+    
+    
+    <div class="contenido-flex">
+      <img src="mundo.png" alt="Ilustración de infancia" 
+           data-aos="zoom-in"
+           data-aos-delay="100"
+           class="girar-al-aparecer">
+      <div class="texto" 
+           data-aos="fade-down"
+           data-aos-delay="200">
+		  
+		  <h2 class="titulo-principal titulo-letras" id="titulo-seccion2">En La Paz,    los niños crecen conectados a los dispositivos, pero desconectados entre sí.</h2>
+        <p>Esta es solo una historia, pero podría ser la de muchos hogares. A veces creemos que dar un dispositivo es brindar tranquilidad, pero lo que un niño necesita no está en una pantalla.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="franja-azul"></div>
+
+  <section class="seccion-azul">
+    <h3>Discover More with Terra</h3>
+    <p>Aprende, explora y diviértete con nosotros en cada aventura.  
+    Porque la imaginación no tiene límites cuando el cielo y el mar se encuentran.</p>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    // === 1. Efecto por letras ===
+    function wrapLetters(element) {
+      const text = element.textContent;
+      element.textContent = '';
+      text.split('').forEach(char => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        element.appendChild(span);
+      });
+    }
+
+    // Aplicar a los títulos
+    document.querySelectorAll('.titulo-letras').forEach(el => {
+      wrapLetters(el);
+    });
+
+    // Animar títulos al cargar (sección 1)
+    window.addEventListener('load', () => {
+      document.querySelectorAll('#titulo1, #titulo2').forEach(el => {
+        setTimeout(() => el.classList.add('animate'), 300);
+      });
+    });
+
+    // Animar título de sección 2 al hacer scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+  entry.target.classList.add('animate');
+} else {
+  entry.target.classList.remove('animate'); // permite reactivar al volver a aparecer
+}
+
+      });
+    }, { threshold: 0.2 });
+
+    const tituloSeccion2 = document.getElementById('titulo-seccion2');
+    if (tituloSeccion2) observer.observe(tituloSeccion2);
+
+    // === 2. Slider automático + manual (CORREGIDO) ===
+    const slider = document.getElementById('imageSlider');
+    const slides = document.querySelectorAll('.slide-fade');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    let slideInterval;
+    let isDragging = false;
+    let startPos = 0;
+
+    function updateSlider() {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentSlide);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlider();
+    }
+
+    function resetInterval() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 6000);
+    }
+
+    // Iniciar slider automático
+    slideInterval = setInterval(nextSlide, 6000);
+
+    // Controles manuales: puntos
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        currentSlide = parseInt(dot.dataset.index);
+        updateSlider();
+        resetInterval();
+      });
+    });
+
+    // Controles manuales: arrastre
+    slider.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startPos = e.pageX;
+      slider.classList.add('dragging');
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const diff = startPos - e.pageX;
+      if (Math.abs(diff) > 50) {
+        isDragging = false;
+        if (diff > 0) {
+          currentSlide = (currentSlide + 1) % totalSlides;
+        } else {
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        }
+        updateSlider();
+        resetInterval();
+        slider.classList.remove('dragging');
+      }
+    });
+
+    const resetDragging = () => {
+      isDragging = false;
+      slider.classList.remove('dragging');
+    };
+
+    window.addEventListener('mouseup', resetDragging);
+    window.addEventListener('mouseleave', resetDragging);
+
+    // Pausar al pasar el mouse
+    slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    slider.addEventListener('mouseleave', () => {
+      slideInterval = setInterval(nextSlide, 6000);
+    });
+
+    // === 3. AOS ===
+    const script = document.createElement('script');
+    script.src = "https://unpkg.com/aos@2.3.4/dist/aos.js";
+    script.onload = () => {
+      AOS.init({
+  duration: 900,
+  once: false,  // se repite cada vez que la sección entra en pantalla
+  offset: 120
+});
+
+    };
+    document.head.appendChild(script);
+  </script>
+</body>
+</html>
