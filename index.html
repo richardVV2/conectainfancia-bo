@@ -302,7 +302,14 @@
   opacity: 1;
 }
 
-
+/* === Texto justificado y sin cortes === */
+.seccion2 .titulo-principal,
+.seccion2 .texto p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
+  word-break: keep-all;
+}
 	  
 	  
 	  
@@ -353,7 +360,7 @@
 
   <!-- Sección 2: título separado, arriba del contenido-flex -->
   <section class="seccion2">
-    <button class="btn">Conoce más</button>
+    <button class="btn">Nuestra historia</button>
     
     
     <div class="contenido-flex">
@@ -365,7 +372,8 @@
            data-aos="fade-down"
            data-aos-delay="200">
 		  
-		  <h2 class="titulo-principal titulo-letras" id="titulo-seccion2">    En La Paz,los niños crecen        conectados a los dispositivos, pero desconectados entre sí.</h2>
+		  <h2 class="titulo-principal titulo-letras" id="titulo-seccion2">En La Paz,los niños crecen        conectados a los dispositivos, pero desconectados entre sí.</h2>
+		
         <p>Esta es solo una historia, pero podría ser la de muchos hogares. A veces creemos que dar un dispositivo es brindar tranquilidad, pero lo que un niño necesita no está en una pantalla.</p>
       </div>
     </div>
