@@ -315,6 +315,250 @@
       transform: scale(1.1);
       opacity: 1;
     }
+
+    /* ===== ESTILOS PARA EL CELULAR INTERACTIVO ===== */
+    .phone-container {
+      width: 360px;
+      height: 700px;
+      background: #111;
+      border-radius: 40px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      border: 8px solid #333;
+      margin: 40px auto;
+    }
+    
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: #f0f0f0;
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .app-header {
+      background: linear-gradient(to right, #4a00e0, #8e2de2);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 30px 30px 0 0;
+    }
+    
+    .app-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .app-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    .timeline-container {
+      padding: 20px;
+      height: calc(100% - 120px);
+      overflow-y: auto;
+    }
+    
+    .period-card {
+      background: white;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .period-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .period-card.active {
+      border-left: 5px solid #8e2de2;
+    }
+    
+    .period-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .period-years {
+      font-weight: bold;
+      color: #4a00e0;
+      font-size: 1.1rem;
+    }
+    
+    .addiction-level {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .addiction-mild {
+      background: #e6f7e9;
+      color: #2e7d32;
+    }
+    
+    .addiction-moderate {
+      background: #fff3e0;
+      color: #ef6c00;
+    }
+    
+    .addiction-strong {
+      background: #ffeaea;
+      color: #c62828;
+    }
+    
+    .addiction-massive {
+      background: #fce4ec;
+      color: #ad1457;
+    }
+    
+    .features-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      background: #f5f5f5;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    
+    .feature-icon {
+      margin-right: 5px;
+      font-size: 1rem;
+    }
+    
+    .stats-container {
+      background: white;
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .stats-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+      text-align: center;
+    }
+    
+    .stats-bar {
+      height: 20px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .stats-fill {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 1s ease-in-out;
+      position: relative;
+    }
+    
+    .stats-label {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .phone-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 25px;
+      background: #111;
+      border-radius: 0 0 15px 15px;
+      z-index: 10;
+    }
+    
+    .phone-home {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      background: #ccc;
+      border-radius: 10px;
+    }
+    
+    .progress-indicator {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ccc;
+      margin: 0 5px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    
+    .progress-dot.active {
+      background: #4a00e0;
+    }
+    
+    .stats-item {
+      margin-bottom: 15px;
+    }
+    
+    .stats-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .phone-section {
+      background: #024ebf;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    
+    .phone-section h3 {
+      color: white;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+    
+    .phone-section p {
+      color: white;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -371,10 +615,158 @@
 
   <div class="franja-azul"></div>
 
-  <section class="seccion-azul">
-    <h3>Discover More with Terra</h3>
-    <p>Aprende, explora y diviértete con nosotros en cada aventura.  
-    Porque la imaginación no tiene límites cuando el cielo y el mar se encuentran.</p>
+  <!-- Sección con el celular interactivo -->
+  <section class="phone-section">
+    <h3>La Evolución del Celular y su Adicción</h3>
+    <p>Explora cómo los teléfonos han evolucionado y cómo su nivel de adicción ha aumentado con el tiempo. Interactúa con cada periodo para conocer sus características.</p>
+    
+    <div class="phone-container">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+            <div class="app-header">
+                <div class="app-title">Evolución del Celular</div>
+                <div class="app-subtitle">Cronología y Nivel de Adicción</div>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="period-card active" data-period="0">
+                    <div class="period-header">
+                        <div class="period-years">1995 - 2005</div>
+                        <div class="addiction-level addiction-mild">Adicción Leve</div>
+                    </div>
+                    <div>Celulares básicos (Nokia 3310, Motorola, Siemens)</div>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">📞</span> Llamadas
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✉️</span> SMS
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🐍</span> Snake
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🧩</span> Tetris
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="period-card" data-period="1">
+                    <div class="period-header">
+                        <div class="period-years">2005 - 2007</div>
+                        <div class="addiction-level addiction-moderate">Adicción Moderada</div>
+                    </div>
+                    <div>Celulares multimedia (Nokia N-Gage, Sony Ericsson, Motorola Razr, BlackBerry)</div>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">📷</span> Cámara
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🎵</span> MP3
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔵</span> Bluetooth
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🌐</span> Internet Básico
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="period-card" data-period="2">
+                    <div class="period-header">
+                        <div class="period-years">2007 en adelante</div>
+                        <div class="addiction-level addiction-strong">Adicción Fuerte</div>
+                    </div>
+                    <div>Inicio de los smartphones: iPhone (2007), Android (2008-2009)</div>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">🚀</span> Internet Real
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">👥</span> Redes Sociales
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📱</span> Apps
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">💬</span> WhatsApp
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="period-card" data-period="3">
+                    <div class="period-header">
+                        <div class="period-years">2012 - 2015 en adelante</div>
+                        <div class="addiction-level addiction-massive">Adicción Masiva</div>
+                    </div>
+                    <div>Popularización de WhatsApp, Instagram, TikTok y juegos como Candy Crush</div>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">💬</span> WhatsApp
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📸</span> Instagram
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🎵</span> TikTok
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🍬</span> Candy Crush
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">⚡</span> 4G/LTE
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stats-title">Nivel de Adicción por Periodo</div>
+                    
+                    <div class="stats-item">
+                        <div>1995-2005</div>
+                        <div class="stats-bar">
+                            <div class="stats-fill" id="stats-0" style="width: 20%; background: #4caf50;"></div>
+                            <div class="stats-label">20%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-item">
+                        <div>2005-2007</div>
+                        <div class="stats-bar">
+                            <div class="stats-fill" id="stats-1" style="width: 45%; background: #ff9800;"></div>
+                            <div class="stats-label">45%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-item">
+                        <div>2007-2012</div>
+                        <div class="stats-bar">
+                            <div class="stats-fill" id="stats-2" style="width: 70%; background: #f44336;"></div>
+                            <div class="stats-label">70%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-item">
+                        <div>2012-Actualidad</div>
+                        <div class="stats-bar">
+                            <div class="stats-fill" id="stats-3" style="width: 90%; background: #ad1457;"></div>
+                            <div class="stats-label">90%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-indicator">
+                <div class="progress-dot active" data-period="0"></div>
+                <div class="progress-dot" data-period="1"></div>
+                <div class="progress-dot" data-period="2"></div>
+                <div class="progress-dot" data-period="3"></div>
+            </div>
+            
+            <div class="phone-home"></div>
+        </div>
+    </div>
   </section>
 
   <!-- Scripts -->
@@ -494,7 +886,53 @@
       slideInterval = setInterval(nextSlide, 6000);
     });
 
-    // === 3. AOS ===
+    // === 3. Funcionalidad del celular interactivo ===
+    document.addEventListener('DOMContentLoaded', function() {
+        const periodCards = document.querySelectorAll('.period-card');
+        const progressDots = document.querySelectorAll('.progress-dot');
+        
+        // Función para actualizar la visualización según el periodo seleccionado
+        function updateDisplay(periodIndex) {
+            // Actualizar tarjetas de periodo
+            periodCards.forEach(card => {
+                card.classList.remove('active');
+            });
+            periodCards[periodIndex].classList.add('active');
+            
+            // Actualizar puntos de progreso
+            progressDots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            progressDots[periodIndex].classList.add('active');
+            
+            // Desplazar la vista a la tarjeta activa
+            periodCards[periodIndex].scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+        
+        // Agregar eventos a las tarjetas
+        periodCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const periodIndex = parseInt(this.getAttribute('data-period'));
+                updateDisplay(periodIndex);
+            });
+        });
+        
+        // Agregar eventos a los puntos de progreso
+        progressDots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const periodIndex = parseInt(this.getAttribute('data-period'));
+                updateDisplay(periodIndex);
+            });
+        });
+        
+        // Inicializar con el primer periodo
+        updateDisplay(0);
+    });
+
+    // === 4. AOS ===
     const script = document.createElement('script');
     script.src = "https://unpkg.com/aos@2.3.4/dist/aos.js";
     script.onload = () => {
