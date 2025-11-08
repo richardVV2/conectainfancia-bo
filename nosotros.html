@@ -6,126 +6,177 @@
     <title>Conecta Infancia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            margin: 20px;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            color: white;
+            padding: 24px;
+            min-height: 100vh;
+            /* ✅ Degradado tricolor: verde claro → beige → azul oscuro */
+            background: linear-gradient(
+                180deg,
+                #d5f0e3,
+                #f5f0e6 50%,
+                #1a3a5f
+            );
+            color: #1a3a5f;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* ✅ Botones superiores */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .header-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #1b5e20;
+            margin: 0;
+        }
+
         .nav-buttons {
             display: flex;
-            justify-content: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 25px;
+            justify-content: flex-end;
         }
 
         .nav-buttons a {
             text-decoration: none;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid #ffffff;
+            padding: 9px 18px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #1b5e20;
+            border: 2px solid #4caf50;
             border-radius: 30px;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(6px);
         }
 
         .nav-buttons a:hover {
-            background: rgba(255, 255, 255, 0.4);
+            background: white;
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-            border-color: #ffb347;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-color: #2196f3;
         }
 
-        h1 {
-            text-align: center;
+        .canva-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 281.1127%;
+            border-radius: 10px;
+            overflow: hidden;
             margin: 20px 0 30px;
-            font-size: 2.2rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(26, 58, 95, 0.15);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(2px);
         }
 
-        /* ✅ Tarjetas inferiores (transparentes, elegantes) */
+        .canva-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         .card-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 16px;
-            margin-top: 30px;
-            padding: 20px 10px;
+            padding: 10px;
         }
 
         .card {
-            width: 160px;
-            padding: 18px 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 150px;
+            padding: 16px 10px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(100, 181, 246, 0.3);
             border-radius: 16px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            backdrop-filter: blur(6px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
         }
 
         .card:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-4px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-            border-color: rgba(255, 255, 255, 0.4);
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            border-color: #4fc3f7;
         }
 
         .card i {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            color: #1565c0;
             display: block;
-            color: white; /* ✅ Cambiado a blanco */
-			
-			
-			
         }
 
         .card span {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            color: #1a3a5f;
         }
 
         .credit {
             text-align: center;
-            margin-top: 10px;
-            opacity: 0.85;
-            font-size: 0.95rem;
+            margin-top: 20px;
+            color: #e0e0e0; /* claro sobre el azul oscuro */
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-title {
+                font-size: 2rem;
+            }
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Botones superiores -->
-<div class="nav-buttons">
-    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
-    <a href="nosotros.html"><i class="fas fa-users"></i> Nosotros</a>
-    <a href="reportaje.html"><i class="fas fa-film"></i> Reportaje Multimedia</a>
-    <a href="libros.html"><i class="fas fa-book"></i> Libros</a>
-    <a href="recursos.html"><i class="fas fa-photo-video"></i> Recursos Multimedia</a>
-    <a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a>
-</div>
-    <h1>Conecta Infancia</h1>
-    
-    <!-- ✅ TU CANVA (sin cambios, funciona bien) -->
-   <!-- Código de Canva -->
-    <div style="position: relative; width: 100%; height: 0; padding-top: 281.1127%;
- padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
- border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAG4BfzlN1c/JI0I6aHJuWYFLIqyDICKSg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-</div>
-    <!-- ✅ 6 TARJETAS TRANSPARENTES ABAJO -->
+    <div class="header">
+        <h1 class="header-title">Conecta Infancia</h1>
+        <div class="nav-buttons">
+            <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+            <a href="nosotros.html"><i class="fas fa-users"></i> Nosotros</a>
+            <a href="reportaje.html"><i class="fas fa-film"></i> Reportaje</a>
+            <a href="libros.html"><i class="fas fa-book"></i> Libros</a>
+            <a href="recursos.html"><i class="fas fa-photo-video"></i> Recursos</a>
+            <a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a>
+        </div>
+    </div>
+
+    <div class="canva-container">
+        <iframe loading="lazy"
+                src="https://www.canva.com/design/DAG4BfzlN1c/JI0I6aHJuWYFLIqyDICKSg/view?embed"
+                allowfullscreen
+                allow="fullscreen">
+        </iframe>
+    </div>
+
     <div class="card-buttons">
         <div class="card" onclick="navigate('Inicio')">
             <i class="fas fa-home"></i>
@@ -153,12 +204,11 @@
         </div>
     </div>
 
-    <p class="credit">2025</p>
+    <p class="credit">© 2025 Conecta Infancia</p>
 
     <script>
         function navigate(section) {
-            alert(`Navegando a: ${section}\n(En producción: redirigiría a la sección correspondiente)`);
-            // Ej: window.location.href = `#${section.toLowerCase()}`;
+            alert(`Navegando a: ${section}`);
         }
     </script>
 
