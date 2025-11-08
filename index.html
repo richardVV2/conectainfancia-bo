@@ -8,34 +8,33 @@
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
             padding: 24px;
-            /* ✅ Degradado suave y natural — ahora más visible sin márgenes grandes */
-            background: linear-gradient(135deg, #f9fbf8, #e8f2eb, #d0e5d8);
-            color: #2d3748;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
+            /* ✅ Degradado: verde claro → azul claro (suave, profesional, coherente) */
+            background: linear-gradient(135deg, #d4edda, #b8e6c9, #bbdefb, #90caf9);
+            color: #1a3a5f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* ✅ Contenedor del encabezado: título a la izq, botones a la der */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 16px;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
         .header-title {
             font-size: 2.3rem;
             font-weight: 700;
-            color: #1b5e20;
+            color: #1b5e20; /* verde oscuro suave */
             margin: 0;
-            white-space: nowrap;
         }
 
         .nav-buttons {
@@ -48,7 +47,7 @@
         .nav-buttons a {
             text-decoration: none;
             padding: 9px 18px;
-            background: rgba(255, 255, 255, 0.65);
+            background: rgba(255, 255, 255, 0.75);
             color: #1b5e20;
             border: 2px solid #4caf50;
             border-radius: 30px;
@@ -60,23 +59,22 @@
         }
 
         .nav-buttons a:hover {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
-            border-color: #81c784;
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
+            border-color: #2196f3;
         }
 
-        /* ✅ Canva container — sin margen extra arriba, para integrar mejor con el fondo */
         .canva-container {
             position: relative;
             width: 100%;
             height: 0;
-            padding-top: 281.1127%; /* relación de aspecto fija */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding-top: 281.1127%;
             border-radius: 10px;
             overflow: hidden;
             margin: 20px 0 30px;
-            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(2px);
         }
 
@@ -89,7 +87,6 @@
             border: none;
         }
 
-        /* ✅ Tarjetas inferiores */
         .card-buttons {
             display: flex;
             justify-content: center;
@@ -102,7 +99,7 @@
             width: 150px;
             padding: 16px 10px;
             background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(76, 175, 80, 0.3);
+            border: 1px solid rgba(100, 181, 246, 0.3);
             border-radius: 16px;
             text-align: center;
             cursor: pointer;
@@ -112,33 +109,32 @@
         }
 
         .card:hover {
-            background: rgba(255, 255, 255, 0.92);
+            background: white;
             transform: translateY(-3px);
-            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1);
-            border-color: rgba(76, 175, 80, 0.5);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            border-color: #4fc3f7;
         }
 
         .card i {
             font-size: 1.7rem;
             margin-bottom: 8px;
-            color: #2e7d32;
+            color: #1565c0;
             display: block;
         }
 
         .card span {
             font-weight: 600;
             font-size: 0.95rem;
-            color: #2d3748;
+            color: #1a3a5f;
         }
 
         .credit {
             text-align: center;
-            margin-top: 15px;
-            color: #6c757d;
+            margin-top: 20px;
+            color: #546e7a;
             font-size: 0.9rem;
         }
 
-        /* ✅ Responsive */
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
@@ -156,7 +152,6 @@
 </head>
 <body>
 
-    <!-- ✅ Encabezado: título izquierda, botones derecha -->
     <div class="header">
         <h1 class="header-title">Conecta Infancia</h1>
         <div class="nav-buttons">
@@ -169,16 +164,14 @@
         </div>
     </div>
 
-    <!-- ✅ Canva embebido -->
     <div class="canva-container">
-        <iframe loading="lazy" 
+        <iframe loading="lazy"
                 src="https://www.canva.com/design/DAG3XpFlowY/grYNj1zRiDPPIJxIXDTFYg/view?embed"
                 allowfullscreen
                 allow="fullscreen">
         </iframe>
     </div>
 
-    <!-- ✅ Tarjetas inferiores -->
     <div class="card-buttons">
         <div class="card" onclick="navigate('Inicio')">
             <i class="fas fa-home"></i>
@@ -211,7 +204,6 @@
     <script>
         function navigate(section) {
             alert(`Navegando a: ${section}`);
-            // Ej: window.location.href = `${section.toLowerCase()}.html`;
         }
     </script>
 
