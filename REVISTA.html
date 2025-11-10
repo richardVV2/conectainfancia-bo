@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Conecta Infancia - Tour</title>
+    <meta name="apple-mobile-web-app-title" content="tour">
+    <meta name="generator" content="In5 v3.7.15">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=768,minimum-scale=.2">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">window.jQuery || document.write('<script src="assets/js/jquery.min.js"><\/script>')</script>
+    <script type="text/javascript" src="assets/js/vmouse.min.js"></script>
+    <script type="text/javascript" src="assets/js/turn.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="assets/js/in5.config.js"></script>
+    <link rel="stylesheet" href="assets/css/pages.css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style media="all and (-ms-high-contrast:none)">*::-ms-backdrop,.svg-img{width:100%;}</style>
+
+    <!-- ✅ ESTILOS MEJORADOS: FONDO AZUL EN SECCIÓN INFERIOR -->
+    <style>
+        :root {
+            --verde-claro: #d5f0e3;
+            --beige: #f5f0e6;
+            --azul-oscuro: #1a3a5f;
+            --verde-oscuro: #1b5e20;
+            --azul-medio: #1565c0;
+            --transicion: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        body {
+            padding: 24px;
+            min-height: 100vh;
+            /* Fondo optimizado con puntos de control más definidos */
+            background: linear-gradient(
+                180deg,
+                var(--verde-claro) 0%,
+                var(--beige) 30%,
+                var(--beige) 70%,
+                var(--azul-oscuro) 100%
+            );
+            background-attachment: fixed;
+            color: var(--azul-oscuro);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            position: relative;
+        }
+
+        /* NUEVO: Fondo azul detrás de las tarjetas */
+        .blue-background {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%; /* Ajusta esta altura según necesites */
+            background: var(--azul-oscuro);
+            z-index: 0; /* Detrás del contenido */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 28px;
+            position: relative; /* Para mantenerlo por encima del fondo azul */
+            z-index: 100; /* Aumentado para asegurar que esté por encima de la revista */
+        }
+
+        .header-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: var(--verde-oscuro);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Botones de navegación superiores - Efecto glass mejorado */
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            position: relative;
+            z-index: 101; /* Aumentado para asegurar que esté por encima de la revista */
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            padding: 9px 18px;
+            background: rgba(255, 255, 255, 0.9); /* Aumentada opacidad para mejor visibilidad */
+            color: var(--verde-oscuro);
+            border: 2px solid #4caf50;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transicion);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+            z-index: 102; /* Asegurar que cada botón esté por encima */
+        }
+
+        .nav-buttons a:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada en hover */
+            border-color: #2196f3;
+        }
+        
+        /* Contenedor de los botones de tarjeta (inferiores) */
+        .card-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 40px 10px;
+            position: relative; /* Para mantenerlo por encima del fondo azul */
+            z-index: 10; /* Mantenemos este z-index ya que no compite con la revista */
+        }
+
+        /* Estilo de cada tarjeta - Efectos mejorados */
+        .card {
+            width: 150px;
+            padding: 16px 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(100, 181, 246, 0.4);
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transicion);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card:hover {
+            background: white;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-color: #4fc3f7;
+        }
+
+        .card i { 
+            font-size: 1.7rem; 
+            margin-bottom: 8px; 
+            color: var(--azul-medio); 
+            display: block; 
+        }
+        
+        .card span { 
+            font-weight: 600; 
+            font-size: 0.95rem; 
+            color: var(--azul-oscuro); 
+        }
+
+        /* Créditos al final - Mejor contraste */
+        .credit {
+            text-align: center;
+            color: #ffffff;
+            font-size: 0.9rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            padding-bottom: 20px;
+            position: relative; /* Para mantenerlo por encima del fondo azul */
+            z-index: 1;
+        }
+
+        /* Contenedor de revista - Asegurar que esté por debajo de los botones */
+        #container-wrap {
+            position: relative !important;
+            height: auto !important;
+            top: auto !important;
+            margin: 0 auto;
+            z-index: 5; /* Reducido para que esté por debajo de los botones */
+        }
+
+        /* Asegurar que los elementos de la revista no se superpongan a los botones */
+        #container, .pages, .page, .page-scale-wrap, .pageItem {
+            position: relative;
+            z-index: auto !important;
+        }
+
+        /* Botones de navegación de la revista (si existen) - mantenerlos funcionales pero por debajo */
+        #page-nav {
+            position: relative;
+            z-index: 10; /* Por debajo de los botones superiores */
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 16px; }
+            .header { flex-direction: column; align-items: center; text-align: center; }
+            .nav-buttons { justify-content: center; }
+            .blue-background { height: 50%; } /* Más altura en móviles para mejor cobertura */
+        }
+    </style>
+    <!-- ✅ FIN: ESTILOS MEJORADOS -->
+
+</head>
+<body>
+
+    <!-- NUEVO: Div con fondo azul para la sección inferior -->
+    <div class="blue-background"></div>
+
+    <header class="header">
+        <h1 class="header-title">Conecta Infancia</h1>
+        <nav class="nav-buttons">
+            <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+            <a href="nosotros.html"><i class="fas fa-users"></i> Nosotros</a>
+            <a href="REVISTA.html"><i class="fas fa-film"></i> Reportaje</a>
+            <a id="btn-libros"><i class="fas fa-book"></i> Libros</a>
+            <a id="btn-recursos"><i class="fas fa-photo-video"></i> Recursos</a>
+        </nav>
+    </header>
+
+    <!--[if lt IE 10]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser...</p>
+    <![endif]-->
+    <div id="loadIndicator"><img src="assets/images/loading.gif" alt="loading..."/><span>&nbsp;</span></div>
+
+    <!-- Contenedor de la revista -->
+    <main id="container-wrap">
+        <div id="container">
+            <ul class="pages flip" id="slider">
+                <!-- ... Aquí van todas las páginas <li> de tu revista ... -->
+                <li class="page" data-name="1"><div class="page-scale-wrap mq-none mq-default" style="width:768px;height:1000px;"><img src="assets/images/blank.gif" class="pageItem" data-src="assets/images/item_2000.png" style="left:-36px !important;top:-12px !important;"></div></li>
+                <li class="page" data-name="2"><div class="page-scale-wrap mq-none mq-default" style="width:768px;height:1000px;"><img src="assets/images/blank.gif" class="pageItem" data-src="assets/images/item_1959.png" style="left:9px !important;top:-18px !important;"></div></li>
+                <li class="page" data-name="3"><div class="page-scale-wrap mq-none mq-default" style="width:768px;height:1000px;"><img src="assets/images/blank.gif" class="pageItem" data-src="assets/images/item_1965.png" style="left:9px !important;top:-14px !important;"></div></li>
+                <li class="page" data-name="4"><div class="page-scale-wrap mq-none mq-default" style="width:768px;height:1000px;"><img src="assets/images/blank.gif" class="pageItem" data-src="assets/images/item_1973.png" style="left:13px !important;top:-12px !important;"><img src="assets/images/blank.gif" class="pageItem" data-src="assets/images/item_1993.png" style="left:768px !important;top:-12px !important;"></div></li>
+                <li class="page" data-name="5"><div class="page-scale-wrap mq-none mq-default" style="width:768px;height:1000px;"><div class="spread-shift" style="left:-768px;"><img src="assets/images/blank.gif" class="pageItem" data-src="assets/images/item_1993.png" style="left:768px !important;top:-12px !important;"></div></div></li>
+                <li class="page"><div class="page-scale-wrap mq-none mq-default" style="width:768px;height:1000px;"><div id="demoNote" class="pageItem">This is a limited preview...</div></div></li>
+            </ul>
+            <div id="prefooter" style="float:left;height:1px;">&nbsp;</div>
+        </div>
+    </main>
+    <!-- Fin del contenedor de la revista -->
+
+    <!-- ✅ BOTONES DE TARJETA INFERIORES -->
+    <section class="card-buttons">
+    <div class="card" id="card-inicio" onclick="window.location.href='index.html'">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+    </div>
+    <div class="card" id="card-nosotros" onclick="window.location.href='nosotros.html'">
+        <i class="fas fa-users"></i>
+        <span>Nosotros</span>
+    </div>
+    <div class="card" id="card-reportaje" onclick="window.location.href='REVISTA.html'">
+        <i class="fas fa-film"></i>
+        <span>Reportaje</span>
+    </div>
+    <div class="card" id="card-libros" onclick="window.location.href='libros.html'">
+        <i class="fas fa-book"></i>
+        <span>Libros</span>
+    </div>
+    <div class="card" id="card-recursos" onclick="window.location.href='recursos.html'">
+        <i class="fas fa-photo-video"></i>
+        <span>Recursos</span>
+    </div>
+</section>
+    <!-- ✅ FIN: BOTONES DE TARJETA -->
+
+    <!-- Créditos -->
+    <footer>
+        <p class="credit">© 2025 Conecta Infancia</p>
+    </footer>
+
+    <!-- Botones originales de in5 que ahora pueden estar ocultos o no ser necesarios -->
+    <nav id="page-nav">
+        <button id="nextBtn" name="nextBtn">&nbsp;</button>
+        <button id="backBtn" name="backBtn">&nbsp;</button>
+    </nav>
+
+    <!-- ✅ SCRIPT PARA QUE AMBOS GRUPOS DE BOTONES FUNCIONEN -->
+    <script>
+    $(document).ready(function() {
+        function goToPage(pageNumber) {
+            $('#slider').turn('page', pageNumber);
+        }
+
+        // Configuración de los botones superiores
+        $('#btn-inicio').on('click', function() { goToPage(1); });
+        $('#btn-nosotros').on('click', function() { goToPage(2); });
+        $('#btn-reportaje').on('click', function() { goToPage(3); });
+        $('#btn-libros').on('click', function() { goToPage(4); });
+        $('#btn-recursos').on('click', function() { goToPage(5); });
+
+        // Configuración de los botones de tarjeta inferiores
+        $('#card-inicio').on('click', function() { goToPage(1); });
+        $('#card-nosotros').on('click', function() { goToPage(2); });
+        $('#card-reportaje').on('click', function() { goToPage(3); });
+        $('#card-libros').on('click', function() { goToPage(4); });
+        $('#card-recursos').on('click', function() { goToPage(5); });
+    });
+    </script>
+
+</body>
+</html>
