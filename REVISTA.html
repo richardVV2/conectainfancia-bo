@@ -207,9 +207,9 @@
     <header class="header">
         <h1 class="header-title">Conecta Infancia</h1>
         <nav class="nav-buttons">
-            <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
-            <a href="nosotros.html"><i class="fas fa-users"></i> Nosotros</a>
-            <a href="REVISTA.html"><i class="fas fa-film"></i> Reportaje</a>
+            <a id="btn-inicio"><i class="fas fa-home"></i> Inicio</a>
+            <a id="btn-nosotros"><i class="fas fa-users"></i> Nosotros</a>
+            <a id="btn-reportaje"><i class="fas fa-film"></i> Reportaje</a>
             <a id="btn-libros"><i class="fas fa-book"></i> Libros</a>
             <a id="btn-recursos"><i class="fas fa-photo-video"></i> Recursos</a>
         </nav>
@@ -239,27 +239,27 @@
 
     <!-- ✅ BOTONES DE TARJETA INFERIORES -->
     <section class="card-buttons">
-    <div class="card" id="card-inicio" onclick="window.location.href='index.html'">
-        <i class="fas fa-home"></i>
-        <span>Inicio</span>
-    </div>
-    <div class="card" id="card-nosotros" onclick="window.location.href='nosotros.html'">
-        <i class="fas fa-users"></i>
-        <span>Nosotros</span>
-    </div>
-    <div class="card" id="card-reportaje" onclick="window.location.href='REVISTA.html'">
-        <i class="fas fa-film"></i>
-        <span>Reportaje</span>
-    </div>
-    <div class="card" id="card-libros" onclick="window.location.href='libros.html'">
-        <i class="fas fa-book"></i>
-        <span>Libros</span>
-    </div>
-    <div class="card" id="card-recursos" onclick="window.location.href='recursos.html'">
-        <i class="fas fa-photo-video"></i>
-        <span>Recursos</span>
-    </div>
-</section>
+        <div class="card" id="card-inicio">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </div>
+        <div class="card" id="card-nosotros">
+            <i class="fas fa-users"></i>
+            <span>Nosotros</span>
+        </div>
+        <div class="card" id="card-reportaje">
+            <i class="fas fa-film"></i>
+            <span>Reportaje</span>
+        </div>
+        <div class="card" id="card-libros">
+            <i class="fas fa-book"></i>
+            <span>Libros</span>
+        </div>
+        <div class="card" id="card-recursos">
+            <i class="fas fa-photo-video"></i>
+            <span>Recursos</span>
+        </div>
+    </section>
     <!-- ✅ FIN: BOTONES DE TARJETA -->
 
     <!-- Créditos -->
@@ -273,9 +273,34 @@
         <button id="backBtn" name="backBtn">&nbsp;</button>
     </nav>
 
-    <!-- ✅ SCRIPT PARA QUE AMBOS GRUPOS DE BOTONES FUNCIONEN -->
+    <!-- ✅ SCRIPT PARA QUE AMBOS GRUPOS DE BOTONES FUNCIONEN Y AGREGAR SONIDO AL PASAR PÁGINAS -->
     <script>
     $(document).ready(function() {
+        // Crear elemento de audio para el sonido de pasar página
+        const pageSound = new Audio();
+        
+        // Usar un sonido de página simple (puedes reemplazarlo con un archivo real)
+        // Este es un sonido base64 simple de papel - reemplázalo con tu archivo de sonido**********************************ojo
+        pageSound.src = "assets/sounds/sword.mp3";
+        
+        // Si tienes un archivo de sonido real, usa esta línea en su lugar:
+        // pageSound.src = "assets/sounds/page-flip.mp3";
+        
+        // Configurar volumen
+        pageSound.volume = 0.3;
+        
+        // Función para reproducir sonido de página
+        function playPageSound() {
+            pageSound.currentTime = 0;
+            pageSound.play().catch(e => console.log("Error reproduciendo sonido de página:", e));
+        }
+        
+        // Detectar cambio de página en la revista
+        $('#slider').on('turn', function(event, page, view) {
+            playPageSound();
+        });
+        
+        // Función para navegar a página
         function goToPage(pageNumber) {
             $('#slider').turn('page', pageNumber);
         }
