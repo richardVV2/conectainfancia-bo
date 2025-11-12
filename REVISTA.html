@@ -210,8 +210,12 @@
             <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
             <a href="nosotros.html"><i class="fas fa-users"></i> Nosotros</a>
             <a href="REVISTA.html"><i class="fas fa-film"></i> Reportaje</a>
-            <a id="btn-libros"><i class="fas fa-book"></i> Libros</a>
+            <a href="libro.html"><i class="fas fa-book"></i> Libros</a>
+            
+            <a id="btn-equilibrio"><i class="fas fa-balance-scale"></i> Equilibrio</a>
             <a id="btn-recursos"><i class="fas fa-photo-video"></i> Recursos</a>
+			
+			<a href="contactos.html"><i class="fas fa-envelope"></i> Contactos</a> <!-- ✅ BOTÓN CONTACTOS AÑADIDO -->
         </nav>
     </header>
 
@@ -239,27 +243,39 @@
 
     <!-- ✅ BOTONES DE TARJETA INFERIORES -->
     <section class="card-buttons">
-    <div class="card" id="card-inicio" onclick="window.location.href='index.html'">
-        <i class="fas fa-home"></i>
-        <span>Inicio</span>
-    </div>
-    <div class="card" id="card-nosotros" onclick="window.location.href='nosotros.html'">
-        <i class="fas fa-users"></i>
-        <span>Nosotros</span>
-    </div>
-    <div class="card" id="card-reportaje" onclick="window.location.href='REVISTA.html'">
-        <i class="fas fa-film"></i>
-        <span>Reportaje</span>
-    </div>
-    <div class="card" id="card-libros" onclick="window.location.href='libros.html'">
-        <i class="fas fa-book"></i>
-        <span>Libros</span>
-    </div>
-    <div class="card" id="card-recursos" onclick="window.location.href='recursos.html'">
-        <i class="fas fa-photo-video"></i>
-        <span>Recursos</span>
-    </div>
-</section>
+        <div class="card" id="card-inicio" onclick="window.location.href='index.html'">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </div>
+        <div class="card" id="card-nosotros" onclick="window.location.href='nosotros.html'">
+            <i class="fas fa-users"></i>
+            <span>Nosotros</span>
+        </div>
+        <div class="card" id="card-reportaje" onclick="window.location.href='REVISTA.html'">
+            <i class="fas fa-film"></i>
+            <span>Reportaje</span>
+        </div>
+        <div class="card" id="card-libros" onclick="window.location.href='libro.html'">
+            <i class="fas fa-book"></i>
+            <span>Libros</span>
+        </div>
+        
+        <div class="card" id="card-equilibrio">
+            <i class="fas fa-balance-scale"></i>
+            <span>Equilibrio</span>
+        </div>
+        <div class="card" id="card-recursos" onclick="window.location.href='recursos.html'">
+            <i class="fas fa-photo-video"></i>
+            <span>Recursos</span>
+        </div>
+		
+		
+		<div class="card" id="card-contactos" onclick="window.location.href='contactos.html'"> <!-- ✅ BOTÓN CONTACTOS AÑADIDO -->
+            <i class="fas fa-envelope"></i>
+            <span>Contactos</span>
+        </div>
+		
+    </section>
     <!-- ✅ FIN: BOTONES DE TARJETA -->
     <!-- Créditos -->
     <footer>
@@ -309,6 +325,7 @@
         $('#btn-nosotros').on('click', function() { goToPage(2); });
         $('#btn-reportaje').on('click', function() { goToPage(3); });
         $('#btn-libros').on('click', function() { goToPage(4); });
+        $('#btn-contactos').on('click', function() { goToPage(6); }); // ✅ CONFIGURADO PARA PÁGINA 6
         $('#btn-recursos').on('click', function() { goToPage(5); });
 
         // Configuración de los botones de tarjeta inferiores
@@ -316,6 +333,7 @@
         $('#card-nosotros').on('click', function() { goToPage(2); });
         $('#card-reportaje').on('click', function() { goToPage(3); });
         $('#card-libros').on('click', function() { goToPage(4); });
+        $('#card-contactos').on('click', function() { goToPage(6); }); // ✅ CONFIGURADO PARA PÁGINA 6
         $('#card-recursos').on('click', function() { goToPage(5); });
     });
     </script>
