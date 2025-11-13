@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta Infancia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 24px;
+            min-height: 100vh;
+            background: linear-gradient(
+                180deg,
+                #d5f0e3,
+                #f5f0e6 50%,
+                #1a3a5f
+            );
+            color: #1a3a5f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .header-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #1b5e20;
+            margin: 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            padding: 9px 18px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #1b5e20;
+            border: 2px solid #4caf50;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(6px);
+        }
+
+        .nav-buttons a:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-color: #2196f3;
+        }
+
+        .podcast-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 32px;
+            text-align: center;
+        }
+
+        .podcast-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1565c0;
+            margin-bottom: 12px;
+        }
+
+        .podcast-desc {
+            font-size: 1.05rem;
+            color: #1a3a5f;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* ✅ CELULAR REALISTA — versión escritorio más grande (380px) */
+        .phone-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 32px auto;
+            perspective: 1000px;
+        }
+
+        .phone {
+            position: relative;
+            width: 100%;
+            max-width: 380px; /* ✅ +60px más ancho en escritorio */
+            height: 760px;     /* ✅ 1:2 ratio */
+            background: linear-gradient(160deg, #c5cbd7, #d2d8e2, #c5cbd7);
+            border-radius: 56px;
+            box-shadow:
+                0 24px 60px rgba(0, 0, 0, 0.45),
+                inset 0 -3px 5px rgba(0, 0, 0, 0.12),
+                inset 0 3px 5px rgba(255, 255, 255, 0.25);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .phone::before {
+            content: '';
+            position: absolute;
+            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            background: #000;
+            border-radius: 44px;
+            box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.85);
+            z-index: 1;
+        }
+
+        .screen {
+            position: absolute;
+            top: 28px;
+            left: 28px;
+            right: 28px;
+            bottom: 42px;
+            border-radius: 38px;
+            overflow: hidden;
+            z-index: 2;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .notch {
+            position: absolute;
+            top: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 36px;
+            background: #000;
+            border-radius: 0 0 22px 22px;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 7px;
+        }
+
+        .notch::before {
+            content: '';
+            width: 14px;
+            height: 14px;
+            background: #111;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2.5px #222;
+        }
+
+        .btn-volume-up,
+        .btn-volume-down,
+        .btn-power {
+            position: absolute;
+            background: #b0b6c0;
+            border-radius: 2.5px;
+            z-index: 3;
+        }
+
+        .btn-volume-up {
+            top: 120px;
+            left: -5px;
+            width: 5px;
+            height: 28px;
+        }
+
+        .btn-volume-down {
+            top: 160px;
+            left: -5px;
+            width: 5px;
+            height: 28px;
+        }
+
+        .btn-power {
+            top: 140px;
+            right: -5px;
+            width: 5px;
+            height: 70px;
+        }
+
+        /* ✅ Contenedor de video */
+        .video-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            min-width: 100%;
+            transform: translate(-50%, -50%);
+            border: none;
+            object-fit: cover;
+        }
+
+        /* ✅ Botón de pantalla completa */
+        .fullscreen-btn {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8);
+            transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .screen:hover .fullscreen-btn,
+        .screen:active .fullscreen-btn {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .fullscreen-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        /* ✅ Texto en blanco, centrado */
+        .podcast-quote {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 28px 0;
+            line-height: 1.5;
+            font-style: italic;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 16px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 10px;
+        }
+
+        .card {
+            width: 150px;
+            padding: 16px 10px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(100, 181, 246, 0.3);
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            border-color: #4fc3f7;
+        }
+
+        .card i {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            color: #1565c0;
+            display: block;
+        }
+
+        .card span {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1a3a5f;
+        }
+
+        .credit {
+            text-align: center;
+            margin-top: 20px;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        /* ✅ Responsive móvil: escala proporcional */
+        @media (max-width: 768px) {
+            .phone {
+                height: auto;
+                aspect-ratio: 1 / 2;
+                max-width: 90vw;
+                padding: 4vw;
+                border-radius: 12vw;
+            }
+            .phone::before {
+                top: 4vw; left: 4vw; right: 4vw; bottom: 4vw;
+                border-radius: 10vw;
+            }
+            .screen {
+                top: 6vw; left: 6vw; right: 6vw; bottom: 8vw;
+                border-radius: 8vw;
+            }
+            .notch {
+                top: 6vw;
+                width: 44vw;
+                height: 10vw;
+                border-radius: 0 0 6vw 6vw;
+                padding-bottom: 2vw;
+            }
+            .notch::before {
+                width: 4vw;
+                height: 4vw;
+            }
+            .btn-volume-up,
+            .btn-volume-down,
+            .btn-power {
+                width: 1.2vw;
+            }
+            .btn-volume-up { top: 18vw; height: 8vw; }
+            .btn-volume-down { top: 24vw; height: 8vw; }
+            .btn-power { top: 20vw; height: 20vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="header-title">Conecta Infancia</h1>
+        <div class="nav-buttons">
+            <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+            <a href="nosotros.html"><i class="fas fa-users"></i> Nosotros</a>
+            <a href="REVISTA.html"><i class="fas fa-film"></i> Reportaje</a>
+            <a href="#"><i class="fas fa-book"></i> Libros</a>
+            <a href="#"><i class="fas fa-sticky-note"></i> Notas</a>
+            <a href="#"><i class="fas fa-balance-scale"></i> Equilibrio</a>
+            <a href="#"><i class="fas fa-photo-video"></i> Recursos</a>
+            <a href="#"><i class="fas fa-envelope"></i> Contacto</a>
+        </div>
+    </div>
+
+    <section class="podcast-section">
+        <h2 class="podcast-title">🎙️ Lecturas en pausa por las pantallas</h2>
+        <p class="podcast-desc">
+          Las pantallas están reduciendo el interés por la lectura en los niños
+      </p>
+
+		
+        <!-- ✅ CELULAR REALISTA CON VIDEO Y FULLSCREEN -->
+        <!-- ✅ CELULAR REALISTA CON VIDEO Y FULLSCREEN -->
+<div class="phone-wrapper">
+    <div class="phone">
+        <div class="btn-volume-up"></div>
+        <div class="btn-volume-down"></div>
+        <div class="btn-power"></div>
+        <div class="notch"></div>
+        <div class="screen">
+            <div class="video-wrapper">
+                <iframe
+                    src="https://player.vimeo.com/video/1136550110?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                    title="Por qué se genera un bajo interés por la lectura"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+            </div>
+            <!-- ✅ Botón de pantalla completa -->
+            <button class="fullscreen-btn" aria-label="Pantalla completa">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+        <p class="podcast-quote">
+            La lectura como puerta al conocimiento y la creatividad
+        </p>
+		
+		
+		
+    </section>
+
+    <div class="card-buttons">
+        <a href="index.html" class="card">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="nosotros.html" class="card">
+            <i class="fas fa-users"></i>
+            <span>Nosotros</span>
+        </a>
+        <a href="REVISTA.html" class="card">
+            <i class="fas fa-film"></i>
+            <span>Reportaje</span>
+        </a>
+        <a href="libros.html" class="card">
+            <i class="fas fa-book"></i>
+            <span>Libros</span>
+        </a>
+        <a href="#" class="card">
+            <i class="fas fa-sticky-note"></i>
+            <span>Notas</span>
+        </a>
+        <a href="#" class="card">
+            <i class="fas fa-balance-scale"></i>
+            <span>Equilibrio</span>
+        </a>
+        <a href="recursos.html" class="card">
+            <i class="fas fa-photo-video"></i>
+            <span>Recursos</span>
+        </a>
+        <a href="contacto.html" class="card">
+            <i class="fas fa-envelope"></i>
+            <span>Contacto</span>
+        </a>
+    </div>
+
+    <p class="credit">© 2025 Conecta Infancia</p>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fullscreenBtn = document.querySelector('.fullscreen-btn');
+            const phoneScreen = document.querySelector('.screen');
+
+            if (!fullscreenBtn || !phoneScreen) return;
+
+            function toggleFullscreen() {
+                if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                    if (phoneScreen.requestFullscreen) {
+                        phoneScreen.requestFullscreen();
+                    } else if (phoneScreen.webkitRequestFullscreen) {
+                        phoneScreen.webkitRequestFullscreen();
+                    }
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    }
+                }
+            }
+
+            function updateScreenRadius() {
+                phoneScreen.style.borderRadius = 
+                    (document.fullscreenElement || document.webkitFullscreenElement) 
+                        ? '0' 
+                        : '38px';
+            }
+
+            fullscreenBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleFullscreen();
+            });
+
+            phoneScreen.addEventListener('dblclick', toggleFullscreen);
+
+            document.addEventListener('fullscreenchange', updateScreenRadius);
+            document.addEventListener('webkitfullscreenchange', updateScreenRadius);
+
+            updateScreenRadius();
+        });
+    </script>
+
+</body>
+</html>
