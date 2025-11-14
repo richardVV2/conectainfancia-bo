@@ -195,6 +195,16 @@
                 margin: 20px 0;
             }
         }
+		
+		
+		.podcast-quote.plomo {
+    color: #666666; /* plomo gris oscuro — ajusta si quieres más claro/oscuro */
+    text-shadow: none; /* opcional: quita sombra si no combina con fondo claro */
+}
+		
+		
+		
+		
     </style>
 </head>
 <body>
@@ -217,34 +227,38 @@
 	
 	
 	
+	
     <section class="podcast-section">
-        <h2 class="podcast-title">🎙️ Podcast:</h2>
-		<h2 class="podcast-title">Voces con propósito</h2>
-        <p class="podcast-desc">
-            
-        </p>
-        <div class="video-container">
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    <h2 class="podcast-title">🎙️</h2>
+    <h2 class="podcast-title">Cortometraje</h2>
+    <p class="podcast-desc">
+        <!-- Puedes añadir descripción si lo deseas -->
+    </p>
+    
+    <!-- ✅ Contenedor responsive manteniendo aspect-ratio (típico 16:9) -->
+    <div class="video-container" style="position: relative; width: 100%; padding-top: 56.25%; /* 16:9 */ overflow: hidden; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);">
         <iframe
-            src="https://player.vimeo.com/video/1136524165?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-            title="De qué manera el uso de dispositivo móvil genera un bajo interés por la lectura en niños y niñas"
+            src="https://player.vimeo.com/video/1136904996?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            title="Conectados pero solos"
             frameborder="0"
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
             allowfullscreen
-            style="width: 100%; height: 100%;"
-            referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>
+            referrerpolicy="strict-origin-when-cross-origin"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+        ></iframe>
     </div>
-</div>
 
-<script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
 
-        <!-- ✅ Texto en blanco, centrado, con espaciado -->
-        <p class="podcast-quote">
-            La lectura como puerta al conocimiento y la creatividad
-        </p>
-    </section>
+    <!-- ✅ Texto en blanco, centrado, con espaciado -->
+    <p class="podcast-quote plomo">
+        Conectados pero solos
+    </p>
+</section>
 
+
+	
+	
 	
 	
 	 <section class="podcast-section">
@@ -270,7 +284,7 @@
 <script src="https://player.vimeo.com/api/player.js"></script>
 
         <!-- ✅ Texto en blanco, centrado, con espaciado -->
-        <p class="podcast-quote">
+        <p class="podcast-quote plomo">
             La lectura como puerta al conocimiento y la creatividad
         </p>
     </section>
