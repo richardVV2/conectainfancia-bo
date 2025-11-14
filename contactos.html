@@ -15,7 +15,7 @@
         body {
             padding: 24px;
             min-height: 100vh;
-            /* ✅ Degradado tricolor: verde claro → beige → azul oscuro suave */
+            /* Degradado tricolor: verde claro → beige → azul oscuro suave */
             background: linear-gradient(
                 180deg,
                 #d5f0e3,
@@ -70,10 +70,91 @@
             border-color: #2196f3;
         }
 
+        /* Tarjeta 3D - Efecto flip */
+        .card-3d-container {
+            perspective: 1200px;
+            width: 100%;
+            max-width: 240px;
+            margin: 32px auto;
+        }
+
+        .card-3d {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-3d-container:hover .card-3d {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(100, 181, 246, 0.3);
+        }
+
+        .card-front {
+            background: rgba(255, 255, 255, 0.92);
+            color: #1a3a5f;
+        }
+
+        .card-back {
+            background: rgba(27, 94, 32, 0.85); /* Verde oscuro con transparencia */
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .card-front img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-front h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1b5e20;
+            margin: 0;
+        }
+
+        .card-back p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            max-width: 200px;
+        }
+
+        .card-back i {
+            font-size: 2rem;
+            margin-top: 8px;
+            color: #ffccbc;
+        }
+
         .contact-card {
             width: 100%;
             max-width: 500px;
-            margin: 30px auto;
+            margin: 20px auto;
             padding: 25px;
             background: rgba(255, 255, 255, 0.9);
             border-radius: 16px;
@@ -189,6 +270,16 @@
                 margin: 20px auto;
                 padding: 20px 15px;
             }
+            .card-3d {
+                height: 280px;
+            }
+            .card-front img {
+                width: 100px;
+                height: 100px;
+            }
+            .card-front h3 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -200,13 +291,25 @@
             <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
             <a href="nosotros.html"><i class="fas fa-users"></i> Nosotros</a>
             <a href="REVISTA.html"><i class="fas fa-film"></i> Reportaje</a>
-			
-			 <a href="notas.html"><i class="fas fa-sticky-note"></i> Notas</a>
+            <a href="notas.html"><i class="fas fa-sticky-note"></i> Notas</a>
             <a href="libro.html"><i class="fas fa-book"></i> Libros</a>
-           
             <a href="radio.html"><i class="fas fa-balance-scale"></i> Equilibrio</a>
             <a href="recursos.html"><i class="fas fa-photo-video"></i> Recursos</a>
             <a href="contactos.html"><i class="fas fa-envelope"></i> Contactos</a>
+        </div>
+    </div>
+
+    <!-- Tarjeta 3D con foto -->
+    <div class="card-3d-container">
+        <div class="card-3d">
+            <div class="card-front">
+                <img src="imagen/CAMILA.jpg" alt="Logo o foto de Conecta Infancia">
+                <h3>Conecta Infancia</h3>
+            </div>
+            <div class="card-back">
+                <p>Construyendo puentes de oportunidad, voz y protección para la infancia.</p>
+                <i class="fas fa-hand-holding-heart"></i>
+            </div>
         </div>
     </div>
 
@@ -216,15 +319,16 @@
         <div class="contact-info">
             <div class="contact-item">
                 <i class="fas fa-phone"></i>
-                <span>+34 912 345 678</span>
+                <span>+591 73540794</span>
             </div>
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <span>info@conectainfancia.org</span>
+                <span>camilaandreacaprilesmamani@gmail.com</span>
             </div>
             <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>Calle Ejemplo, 123<br>28001 La paz Bolivia</span>
+                <span>Camila Andrea Capriles Mamani<br>
+                La paz Bolivia</span>
             </div>
             <div class="contact-item">
                 <i class="fas fa-clock"></i>
@@ -246,19 +350,14 @@
             <i class="fas fa-film"></i>
             <span>Reportaje</span>
         </a>
-		
-		<a href="notas.html" class="card">
+        <a href="notas.html" class="card">
             <i class="fas fa-sticky-note"></i>
             <span>Notas</span>
         </a>
-		
-		
-		
         <a href="libro.html" class="card">
             <i class="fas fa-book"></i>
             <span>Libros</span>
         </a>
-        
         <a href="radio.html" class="card">
             <i class="fas fa-balance-scale"></i>
             <span>Equilibrio</span>
