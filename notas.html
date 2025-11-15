@@ -93,6 +93,20 @@
             border: none;
         }
 
+        .canva-link {
+            display: block;
+            text-align: center;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #757575; /* gris plomo, según tu preferencia */
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .canva-link:hover {
+            opacity: 0.8;
+        }
+
         .card-buttons {
             display: flex;
             justify-content: center;
@@ -164,22 +178,28 @@
             <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
             <a href="nosotros.html"><i class="fas fa-users"></i> Nosotros</a>
             <a href="REVISTA.html"><i class="fas fa-film"></i> Reportaje</a>
-			<a href="notas.html"><i class="fas fa-sticky-note"></i> Notas</a>
+            <a href="notas.html"><i class="fas fa-sticky-note"></i> Notas</a>
             <a href="libro.html"><i class="fas fa-book"></i> Libros</a>
-            
             <a href="radio.html"><i class="fas fa-balance-scale"></i> Equilibrio</a>
             <a href="recursos.html"><i class="fas fa-photo-video"></i> Recursos</a>
             <a href="contactos.html"><i class="fas fa-envelope"></i> Contactos</a>
         </div>
     </div>
 
-  <!--  <div class="canva-container">
+    <!-- ✅ Nuevo iframe de Canva insertado con estilo coherente -->
+    <div class="canva-container">
         <iframe loading="lazy"
-                src="https://www.canva.com/design/DAG3XpFlowY/grYNj1zRiDPPIJxIXDTFYg/view?embed"
+                src="https://www.canva.com/design/DAG4W-EyKtg/uOtgFpE1rS78oT30Y1ydjg/view?embed"
                 allowfullscreen
                 allow="fullscreen">
         </iframe>
-    </div>-->
+    </div>
+    <a href="https://www.canva.com/design/DAG4W-EyKtg/uOtgFpE1rS78oT30Y1ydjg/view?utm_content=DAG4W-EyKtg&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+       target="_blank"
+       class="canva-link"
+       rel="noopener noreferrer">
+        Ver presentación en Canva
+    </a>
 
     <div class="card-buttons">
         <a href="index.html" class="card">
@@ -194,20 +214,14 @@
             <i class="fas fa-film"></i>
             <span>Reportaje</span>
         </a>
-		
-		
-		<a href="notas.html" class="card">
+        <a href="notas.html" class="card">
             <i class="fas fa-sticky-note"></i>
             <span>Notas</span>
         </a>
-		
-		
-		
         <a href="libro.html" class="card">
             <i class="fas fa-book"></i>
             <span>Libros</span>
         </a>
-        
         <a href="radio.html" class="card">
             <i class="fas fa-balance-scale"></i>
             <span>Equilibrio</span>
