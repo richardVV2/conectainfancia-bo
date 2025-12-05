@@ -32,7 +32,7 @@ var prefix = (function () {
 var pre = (document.createElement('div').style['WebkitTransform'] != undefined) ? '-webkit-' : '';
 var useSwipe = true;
 var pageMode = 'flip';
-var pageW = 768, pageH = 1000;
+var pageW = 768, pageH = 900;
 var multifile = false;
 if(multifile) { 
 	$('html').addClass('multifile'); 
@@ -56,7 +56,7 @@ var sliderSettings = {}, nav = {}, in5 = {layouts:[
  	{
  		"class": "mq-none mq-default",
  		"width": 768,
- 		"height": 1000,
+ 		"height": 900,
  		"default": true,
  		"trigger": "default",
  		"index": 0
@@ -547,7 +547,7 @@ function getOrientation() {
 }
 
 function addNavProps(){
-	if(nav.numPages === undefined) nav.numPages=5;
+	if(nav.numPages === undefined) nav.numPages=7;
 	nav.rtl = $('#slider').attr('data-dir') == 'rtl';
 	if(nav.rtl) $('html').attr('data-dir', 'rtl');
 	nav.init = function() { setTimeout(function(){nav.to(getStartPage());},1); };

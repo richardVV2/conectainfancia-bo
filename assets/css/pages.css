@@ -420,9 +420,9 @@ ul.thumbs > li img { box-shadow:0 0 4px rgba(0, 0, 0, 0.5); }
 body, #container-wrap { background:#ededed; }
 :-webkit-full-screen { background:#ededed; }
 #loadIndicator span:after { padding-left:1ex; content:'loading content...'; }
-.page-scale-wrap { width:768px; height:1000px; background: #fff !important; }
+.page-scale-wrap { width:768px; height:900px; background: #fff !important; }
 .paper-vertical { width:768px; height:100%; }
-.paper-horizontal { width:4668px; height:1012px; }
+.paper-horizontal { width:6224px; height:912px; }
 nav#page-nav { display:none; }
 html.nav-transition nav#page-nav { opacity:.3; pointer-events:none; }
 nav#page-nav > button {
@@ -448,7 +448,7 @@ html[data-dir="rtl"] nav#page-nav > #backBtn, html:not([data-dir="rtl"]) nav#pag
 	-webkit-transform:scaleX(-1);
 	transform:scaleX(-1);
 }
-@media all and (max-height:1000px) {
+@media all and (max-height:900px) {
 	.paper-horizontal { margin:0;top:0;}
 	#container > .page { margin:0 auto;}/*pos top for webkit+baker*/
 }
@@ -475,57 +475,29 @@ html[data-dir="rtl"] nav#page-nav > #backBtn, html:not([data-dir="rtl"]) nav#pag
 #item348 {
 	width:768px !important;
 	height:88px !important;
-	top:912px !important;
+	top:812px !important;
 	background:#ffffff;
-}
-
-#item321 {
-	width:62px !important;
-	height:62px !important;
-	top:62px !important;
-	background:#c8c8c8;
-}
-
-#item322 {
-	width:62px !important;
-	height:62px !important;
-	left:62px !important;
-	top:62px !important;
-	background:#ececec;
-}
-
-#item323 {
-	width:62px !important;
-	height:62px !important;
-	background:#e3e3e3;
 }
 
 #item324 {
 	width:36px !important;
 	height:31px !important;
 	left:13px !important;
-	top:954px !important;
+	top:854px !important;
+}
+
+#item1810 {
+	width:768px !important;
+	height:124px !important;
+	top:776px !important;
+	background:#ffffff;
 }
 
 #item1931 {
 	width:768px !important;
 	height:124px !important;
 	left:768px !important;
-	top:876px !important;
-	background:#ffffff;
-}
-
-#item1810 {
-	width:768px !important;
-	height:124px !important;
-	top:876px !important;
-	background:#ffffff;
-}
-
-#item1940 {
-	width:768px !important;
-	height:124px !important;
-	top:876px !important;
+	top:776px !important;
 	background:#ffffff;
 }
 
@@ -533,6 +505,6 @@ html[data-dir="rtl"] nav#page-nav > #backBtn, html:not([data-dir="rtl"]) nav#pag
 	width:768px !important;
 	height:124px !important;
 	left:768px !important;
-	top:876px !important;
+	top:776px !important;
 	background:#ffffff;
 }
